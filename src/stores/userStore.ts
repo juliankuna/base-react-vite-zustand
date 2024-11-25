@@ -4,6 +4,7 @@ type User = {
   firstName: string;
   lastName: string;
   email: string | undefined;
+  password: string;
   phone: string | undefined;
   token: string | undefined;
   roles: string[];

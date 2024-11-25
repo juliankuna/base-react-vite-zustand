@@ -20,7 +20,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Paths Alias */
+    "baseUrl": "./",  // Asegura que las rutas relativas se resuelvan desde la raíz
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@pages/*": ["src/pages/*"],
+      "@stores/*": ["src/stores/*"],
+      "@components/*": ["src/components/*"]
+    }
   },
   "include": ["src"]
 }

@@ -1,0 +1,53 @@
+/* Estilo principal de la página */
+.example-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: #f5f5f5; /* Fondo suave */
+    padding: 20px; /* Espaciado para dispositivos pequeños */
+    text-align: center; /* Centra el texto */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño */
+  }
+  
+  /* Estilo del logo */
+  .logo.react {
+    width: 150px; /* Ancho inicial del logo */
+    height: auto; /* Mantiene las proporciones */
+    margin-bottom: 20px; /* Espacio entre el logo y el texto */
+    transition: transform 0.3s ease;
+  }
+  
+  .logo.react:hover {
+    transform: scale(1.1); /* Efecto de agrandamiento al pasar el cursor */
+  }
+  
+  /* Estilo del encabezado */
+  h3 {
+    font-size: 1.5rem; /* Tamaño base del texto */
+    color: #333; /* Color del texto */
+    margin: 0;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .logo.react {
+      width: 120px; /* Logo más pequeño en pantallas pequeñas */
+    }
+  
+    h3 {
+      font-size: 1.2rem; /* Texto más pequeño en pantallas pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .logo.react {
+      width: 100px; /* Aún más pequeño en pantallas muy pequeñas */
+    }
+  
+    h3 {
+      font-size: 1rem; /* Tamaño de texto reducido */
+    }
+  }
+  

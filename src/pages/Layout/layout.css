@@ -1,180 +1,178 @@
-/* .layout {
-    display: grid;
-    grid-template-rows: 60px auto 40px;
-    grid-template-columns: 60px auto;
-    grid-template-areas:
-      "header header"
-      "sidebar main"
-      "footer footer";
-    height: 100vh;
-  }
-  
-  .header {
-    grid-area: header;
-    background-color: #4caf50;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-  }
-  
-  .footer {
-    grid-area: footer;
-    background-color: #333;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-  }
-  
-  .sidebar {
-    grid-area: sidebar;
-    background-color: #1e1e2f;
-    color: white;
-    overflow: hidden;
-    transition: width 0.3s ease;
-    white-space: nowrap;
-  }
-  
-  .sidebar.collapsed {
-    width: 60px;
-  }
-  
-  .sidebar.expanded {
-    width: 200px;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar li {
-    padding: 15px;
-    cursor: pointer;
-  }
-  
-  .sidebar li:hover {
-    background-color: #333;
-  }
-  
-  .main-content {
-    grid-area: main;
-    padding: 20px;
-    background-color: #f4f4f4;
-    overflow-y: auto;
-  }
-   
-  */
-
-  /* Estructura general */
+/* Layout General */
 .layout {
-    display: grid;
-    grid-template-rows: 60px auto 40px;
-    grid-template-columns: 60px auto;
-    grid-template-areas:
-      "header header"
-      "sidebar main"
-      "footer footer";
-    height: 100vh;
-  }
-  
-  @media (max-width: 768px) {
-    .layout {
-      grid-template-rows: 50px auto 30px;
-      grid-template-columns: 0 auto; /* Ocultar el sidebar */
-      grid-template-areas:
-        "header header"
-        "main main"
-        "footer footer";
-    }
-  }
-  
-  /* Header */
-  .header {
-    grid-area: header;
-    background-color: #4caf50;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Para incluir un botón de menú */
-    padding: 0 15px;
-    font-size: 1.2rem;
-  }
-  
-  @media (max-width: 768px) {
-    .header {
-      font-size: 1rem;
-      height: 50px;
-    }
-  }
-  
-  /* Footer */
-  .footer {
-    grid-area: footer;
-    background-color: #333;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-  }
-  
-  @media (max-width: 768px) {
-    .footer {
-      font-size: 0.8rem;
-      height: 30px;
-    }
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    grid-area: sidebar;
-    background-color: #1e1e2f;
-    color: white;
-    overflow: hidden;
-    transition: width 0.3s ease;
-    white-space: nowrap;
-    z-index: 1000; /* Para estar sobre el contenido */
-  }
-  
-  .sidebar.collapsed {
-    width: 60px;
-  }
-  
-  .sidebar.expanded {
-    width: 200px;
-  }
-  
-  @media (max-width: 768px) {
-    .sidebar {
-      position: absolute;
-      height: 100%;
-      top: 0;
-      left: -200px; /* Oculto fuera de la vista */
-      width: 200px;
-      transition: left 0.3s ease;
-    }
-  
-    .sidebar.expanded {
-      left: 0; /* Se desliza dentro de la vista */
-    }
-  }
-  
-  /* Área principal */
-  .main-content {
-    grid-area: main;
-    padding: 20px;
-    background-color: #f4f4f4;
-    overflow-y: auto;
-  }
-  
-  @media (max-width: 768px) {
-    .main-content {
-      padding: 10px;
-    }
-  }
-  
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto; /* Ajusta automáticamente los tamaños */
+  height: 100vh; /* Ocupa toda la pantalla */
+  position: relative; /* Necesario para posicionar el sidebar sobre el main */
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed; /* Hace que el sidebar esté flotante */
+  top: 50%; /* Posiciona el sidebar verticalmente en el medio */
+  left: 0;
+  transform: translateY(-50%); /* Ajusta la posición para centrarlo */
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea los elementos horizontalmente a la izquierda */
+  justify-content: center; /* Centra los elementos verticalmente */
+  overflow: hidden;
+  transition: width 0.3s ease;
+  z-index: 10; /* Asegura que esté por encima del contenido principal */
+  white-space: nowrap;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar.expanded {
+  width: 200px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.item:hover {
+  background-color: black;
+}
+
+.icon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  flex-shrink: 0;
+  text-align: center;
+  width: 40px;
+}
+
+.label {
+  font-size: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .label {
+  opacity: 0;
+}
+
+.sidebar.collapsed .items {
+  align-items: center;
+}
+
+/* Main Content */
+.main-content {
+  /* grid-area: main; */
+  position: relative; /* Asegura que el main-content no se vea afectado */
+  margin: 0; /* Elimina cualquier margen causado por el sidebar */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  z-index: 1; /* Mantiene el contenido debajo del sidebar */
+  margin-left: 0; /* Sin desplazamiento por defecto */
+  overflow: auto; /* Permite el desplazamiento si el contenido es grande */
+}
+
+
+/* Header */
+.header {
+  grid-area: header;
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 15px; /* Padding vertical de 5px y horizontal de 15px */
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para separación */
+  position: relative; /* Contenedor relativo para el botón */
+  height: 45px; /* Altura ligeramente aumentada para evitar desbordes */
+  max-height: 50px; /* Limita la altura a un máximo */
+  min-height: 40px; /* Asegura consistencia */
+  box-sizing: border-box; /* Incluye padding y bordes dentro del tamaño */
+}
+
+/* Contenedor del botón */
+.menu-container {
+  position: relative; /* Asegura posicionamiento sin desbordes */
+  margin-left: auto; /* Alinea al borde derecho */
+  display: flex; /* Asegura alineación con el header */
+  align-items: center; /* Centra verticalmente el botón */
+}
+
+/* Botón toggle */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.4rem; /* Ajuste para adaptarse al header */
+  cursor: pointer;
+  color: white; /* Ícono visible */
+  height: 35px; /* Altura ajustada para evitar desbordes */
+  width: 40px; /* Ancho fijo para consistencia */
+  background-color: transparent; /* Sin color de fondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* Prioriza sobre otros elementos */
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+  position: absolute; /* Flotante respecto a menu-container */
+  top: calc(100% + 5px); /* Aparece justo debajo del botón con un margen */
+  right: 0; /* Alineado al borde derecho del contenedor */
+  background-color: white; /* Fondo blanco */
+  color: black; /* Texto negro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+  min-width: 150px; /* Ancho mínimo */
+  z-index: 10; /* Asegura que esté sobre el contenido */
+  border-radius: 4px;
+  overflow: hidden; /* Asegura que los bordes no sobresalgan */
+}
+
+/* Elementos del menú */
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+/* Footer */
+.footer {
+  grid-area: footer;
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  text-align: center; /* Centrar el texto */
+  padding: 10px 0; /* Espaciado interno */
+  font-size: 0.9rem; /* Tamaño de fuente */
+  position: fixed; /* Fija el footer al borde inferior */
+  bottom: 0; /* Sin separación del borde */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2); /* Sombra para separación */
+}

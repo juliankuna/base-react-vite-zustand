@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import Layout from "../../../pages/Layout";
-import { useUserStore } from "../../../stores/userStore";
+import Layout from "@pages/Layout";
+import { useUserStore } from "@stores/userStore";
 
 export const ProtectedRoute = ({ children }: PropsWithChildren) => {
   const { user } = useUserStore();

@@ -1,0 +1,48 @@
+/* Estilo principal de la página */
+.not-found-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: #f5f5f5; /* Fondo suave */
+    text-align: center; /* Centra el texto */
+    color: #333; /* Color base del texto */
+    padding: 20px; /* Espaciado para dispositivos pequeños */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño */
+  }
+  
+  /* Estilo del encabezado */
+  .not-found-page h1 {
+    font-size: 6rem; /* Tamaño grande para el código de error */
+    margin: 0; /* Elimina el margen superior e inferior */
+    color: #ff4757; /* Color llamativo para el número */
+  }
+  
+  /* Estilo del mensaje */
+  .not-found-page p {
+    font-size: 1.5rem; /* Tamaño base del mensaje */
+    margin: 10px 0 0; /* Espaciado adecuado debajo del encabezado */
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .not-found-page h1 {
+      font-size: 4rem; /* Tamaño reducido en pantallas más pequeñas */
+    }
+  
+    .not-found-page p {
+      font-size: 1.2rem; /* Ajusta el tamaño del mensaje */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .not-found-page h1 {
+      font-size: 3rem; /* Aún más pequeño en pantallas muy pequeñas */
+    }
+  
+    .not-found-page p {
+      font-size: 1rem; /* Reduce el tamaño del mensaje */
+    }
+  }
+  
